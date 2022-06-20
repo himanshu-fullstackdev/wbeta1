@@ -1,0 +1,96 @@
+.MainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  bottom: 0;
+  right: 0;
+}
+.VideoWrapper {
+
+}
+.Video {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+}
+.Video.ShowVideo {
+  visibility: visible;
+  opacity: 1;
+}
+.finalImageWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  flex-direction: column;
+  transition: 0.4s;
+  z-index: 99;
+}
+.finalImageWrapper img {
+  width: 600px;
+}
+.finalImageWrapper button {
+  margin-top: 15px;
+}
+.GnMainWrapper {
+
+}
+.GnWrapper {
+  margin-bottom: 15px;
+}
+.GnLeft {
+  margin-right: 7.5px !important;
+}
+.GnRight {
+  margin-left: 7.5px !important;
+}
+.ButtonWrapper button {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .finalImageWrapper img {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .finalImageWrapper img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .finalImageWrapper img {
+    width: 300px;
+  }
+  .GnLeft {
+    margin-right: 0px !important;
+    width: 100%;
+    margin-bottom: 10px !important;
+  }
+  .GnRight {
+    margin-left: 0px !important;
+    width: 100%;
+    margin-bottom: 10px !important;
+  }
+  .GnWrapper {
+    margin-bottom: 0px;
+  }
+}
