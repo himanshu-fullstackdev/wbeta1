@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import classes from "./home.module.css";
+import classes from "./styles.module.css";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import mergeImages from "merge-images";
-import L4Image from "../layers/l4/L4.png";
+import L4Image from "../../layers/l4/L4.png";
 import { toPng } from "html-to-image";
-import bgVideo from "../assets/videos/bg-video.mp4";
-import bgVideoMobile from "../assets/videos/bg-video-mobile.mp4";
+import bgVideo from "../../assets/videos/bg-video.mp4";
+import bgVideoMobile from "../../assets/videos/bg-video-mobile.mp4";
 import "./card.scss";
 
 // layers max value
@@ -121,9 +121,9 @@ const Home = (props) => {
     let l3Val = getRandomNumber(l3MaxImages);
 
     // get images
-    const L1Image = require("../layers/l1/L1_" + l1Val + ".png");
-    const L2Image = require("../layers/l2/L2_" + l2Val + ".png");
-    const L3Image = require("../layers/l3/L3_" + l3Val + ".png");
+    const L1Image = require("../../layers/l1/L1_" + l1Val + ".png");
+    const L2Image = require("../../layers/l2/L2_" + l2Val + ".png");
+    const L3Image = require("../../layers/l3/L3_" + l3Val + ".png");
 
     // create html elements using dropdown values
 
