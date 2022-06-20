@@ -9,7 +9,8 @@ import L4Image from "../../layers/l4/L4.png";
 import { toPng } from "html-to-image";
 import bgVideo from "../../assets/videos/bg-video.mp4";
 import bgVideoMobile from "../../assets/videos/bg-video-mobile.mp4";
-import "./card.scss";
+import card from "./card.module.scss";
+// import "./card.scss";
 
 // layers max value
 const l1MaxImages = 3;
@@ -237,7 +238,7 @@ const Home = (props) => {
         </video>
         {isVideoShowing && isFinalPopupShowing && (
           <div className={classes.finalImageWrapper}>
-            <div className="card animated">
+            <div className={`${card.card} ${card.animated}`}>
               <img src={finalImage} alt="final" />
             </div>
             <Button variant="contained" onClick={closePopup}>
