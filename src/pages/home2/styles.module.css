@@ -106,20 +106,46 @@
 	100% {transform: translateY(0%);   animation-timing-function: ease-out;}
 }
 
+@media screen and (max-width: 991px) {
+  .finalImageWrapper img {
+    width: 125px;
+  }
+  .finalImageWrapper .Number {
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .finalImageWrapper img {
-    width: 500px;
+    width: 100px;
+  }
+  .finalImageWrapper .Number {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .finalImageWrapper img {
-    width: 400px;
+    width: 75px;
+  }
+  .finalImageWrapper .Number {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .finalImageWrapper img {
-    width: 300px;
+    width: 50px;
+  }
+  .finalImageWrapper .Number {
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
   }
 }
