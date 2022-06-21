@@ -3,6 +3,11 @@ import classes from "./styles.module.css";
 import Button from "@mui/material/Button";
 import bgVideo from "../../assets/videos/bg-video.mp4";
 import bgVideoMobile from "../../assets/videos/bg-video-mobile.mp4";
+import n1 from "../../assets/images/n1.png";
+import n2 from "../../assets/images/n2.png";
+import n3 from "../../assets/images/n3.png";
+import n4 from "../../assets/images/n4.png";
+import card from "../card.module.scss";
 
 // max value of each dropdown
 const gn1MaxValue = 49;
@@ -107,10 +112,32 @@ const Home2 = (props) => {
         </video>
         {isVideoShowing && isFinalPopupShowing && (
           <div className={classes.finalImageWrapper}>
-            {gn1}
-            {gn2}
-            {gn3}
-            {gn4}
+            <div className={classes.NumbersWrapper}>
+              <div className={`${card.card} ${card.animated} ${classes.card}`}>
+                <div className={classes.NumberWrapper}>
+                  <img src={n1} alt="n1" />
+                  <div className={classes.Number}>{gn1}</div>
+                </div>
+              </div>
+              <div className={`${card.card} ${card.animated} ${classes.card}`}>
+                <div className={classes.NumberWrapper}>
+                  <img src={n2} alt="n2" />
+                  <div className={classes.Number}>{gn2}</div>
+                </div>
+              </div>
+              <div className={`${card.card} ${card.animated} ${classes.card}`}>
+                <div className={classes.NumberWrapper}>
+                  <img src={n3} alt="n3" />
+                  <div className={classes.Number}>{gn3}</div>
+                </div>
+              </div>
+              <div className={`${card.card} ${card.animated} ${classes.card}`}>
+                <div className={classes.NumberWrapper}>
+                  <img src={n4} alt="n4" />
+                  <div className={classes.Number}>{gn4}</div>
+                </div>
+              </div>
+            </div>
             <Button variant="contained" onClick={closePopup}>
               Confirm
             </Button>

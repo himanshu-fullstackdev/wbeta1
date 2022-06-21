@@ -42,28 +42,43 @@
   transition: 0.4s;
   z-index: 99;
 }
-.finalImageWrapper img {
-  width: 600px;
-}
 .finalImageWrapper button {
   margin-top: 15px;
 }
-.GnMainWrapper {
+.finalImageWrapper .NumbersWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.finalImageWrapper .NumberWrapper {
+  position: relative;
 }
-.GnWrapper {
-  margin-bottom: 15px;
+.finalImageWrapper img {
+  width: 150px;
 }
-.GnLeft {
-  margin-right: 7.5px !important;
-}
-.GnRight {
-  margin-left: 7.5px !important;
+.finalImageWrapper .Number {
+  font-size: 40px;
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .ButtonWrapper button {
   width: 100%;
 }
-
+.card, .card:before, .card:after {
+  border-radius: 100%;
+}
+.card {
+  margin: 0px 5px;
+}
 @media screen and (max-width: 768px) {
   .finalImageWrapper img {
     width: 500px;
@@ -79,18 +94,5 @@
 @media screen and (max-width: 480px) {
   .finalImageWrapper img {
     width: 300px;
-  }
-  .GnLeft {
-    margin-right: 0px !important;
-    width: 100%;
-    margin-bottom: 10px !important;
-  }
-  .GnRight {
-    margin-left: 0px !important;
-    width: 100%;
-    margin-bottom: 10px !important;
-  }
-  .GnWrapper {
-    margin-bottom: 0px;
   }
 }
