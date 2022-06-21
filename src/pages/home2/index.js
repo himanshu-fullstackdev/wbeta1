@@ -15,6 +15,9 @@ const gn2MaxValue = 49;
 const gn3MaxValue = 49;
 const gn4MaxValue = 49;
 
+// total video count
+const totalVideoCount = 4;
+
 const Home2 = (props) => {
   // width
   const [width, setWidth] = useState(window.innerWidth);
@@ -24,6 +27,9 @@ const Home2 = (props) => {
   const [gn2, setGn2] = useState(null);
   const [gn3, setGn3] = useState(null);
   const [gn4, setGn4] = useState(null);
+
+  // video
+  const [videoCount, setVideoCount] = useState(1);
 
   // booleans
   const isMobile = width <= 600;
@@ -92,6 +98,13 @@ const Home2 = (props) => {
     video.current && video.current.play();
   };
 
+  const handleVideoEnded = () => {
+    if (videoCount < totalVideoCount) {
+      playVideo();
+      setVideoCount(videoCount + 1);
+    }
+  };
+
   // close video, popup & reset everything
   const closePopup = () => {
     setIsVideoShowing(false);
@@ -128,6 +141,7 @@ const Home2 = (props) => {
           ref={video}
           playsInline
           autoPlay
+          onEnded={handleVideoEnded}
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
