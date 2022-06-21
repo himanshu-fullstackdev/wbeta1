@@ -45,6 +45,15 @@
 .finalImageWrapper button {
   margin-top: 15px;
 }
+.finalImageWrapper .NumberMainWrapper {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+.finalImageWrapper .NumberMainWrapper.ShowNumberMainWrapper {
+  visibility: visible;
+  opacity: 1;
+}
 .finalImageWrapper .NumbersWrapper {
   display: flex;
   flex-wrap: wrap;
@@ -79,6 +88,24 @@
 .card {
   margin: 0px 5px;
 }
+.bounce {
+  animation: bounce 5s;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+}
+@keyframes bounce {
+  0% {transform: translateY(-200%); animation-timing-function: ease-in;}
+  11% {transform: translateY(0%);   animation-timing-function: ease-out; }
+  22% {transform: translateY(-150%); animation-timing-function: ease-in;}
+  33% {transform: translateY(-0%);   animation-timing-function: ease-out;}
+  44% {transform: translateY(-100%); animation-timing-function: ease-in;}
+	55% {transform: translateY(0%);   animation-timing-function: ease-out;}
+  66% {transform: translateY(-50%); animation-timing-function: ease-in;}
+	77% {transform: translateY(0%);   animation-timing-function: ease-out;}
+  88% {transform: translateY(-25%); animation-timing-function: ease-in;}
+	100% {transform: translateY(0%);   animation-timing-function: ease-out;}
+}
+
 @media screen and (max-width: 768px) {
   .finalImageWrapper img {
     width: 500px;

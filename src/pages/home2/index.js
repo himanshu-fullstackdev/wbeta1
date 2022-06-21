@@ -29,6 +29,9 @@ const Home2 = (props) => {
   const isMobile = width <= 600;
   const [isVideoShowing, setIsVideoShowing] = useState(false);
   const [isFinalPopupShowing, setIsFinalPopupShowing] = useState(false);
+  const [isSecondNumberShowing, setIsSecondNumberShowing] = useState(false);
+  const [isThirdNumberShowing, setIsThirdNumberShowing] = useState(false);
+  const [isFourthNumberShowing, setIsFourthNumberShowing] = useState(false);
 
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
@@ -44,14 +47,29 @@ const Home2 = (props) => {
 
   // display popup after 3s
   useEffect(() => {
-    let timeout;
+    let timeout1;
+    let timeout2;
+    let timeout3;
+    let timeout4;
     if (isVideoShowing) {
-      timeout = setTimeout(() => {
+      timeout1 = setTimeout(() => {
         setIsFinalPopupShowing(true);
       }, 3000);
+      timeout2 = setTimeout(() => {
+        setIsSecondNumberShowing(true);
+      }, 8000);
+      timeout3 = setTimeout(() => {
+        setIsThirdNumberShowing(true);
+      }, 13000);
+      timeout4 = setTimeout(() => {
+        setIsFourthNumberShowing(true);
+      }, 18000);
     }
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+      clearTimeout(timeout4);
     };
   }, [isVideoShowing]);
 
@@ -78,6 +96,9 @@ const Home2 = (props) => {
   const closePopup = () => {
     setIsVideoShowing(false);
     setIsFinalPopupShowing(false);
+    setIsSecondNumberShowing(false);
+    setIsThirdNumberShowing(false);
+    setIsFourthNumberShowing(false);
     setGn1("");
     setGn2("");
     setGn3("");
@@ -110,37 +131,88 @@ const Home2 = (props) => {
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
-        {isVideoShowing && isFinalPopupShowing && (
+        {isVideoShowing && (
           <div className={classes.finalImageWrapper}>
             <div className={classes.NumbersWrapper}>
-              <div className={`${card.card} ${card.animated} ${classes.card}`}>
-                <div className={classes.NumberWrapper}>
-                  <img src={n1} alt="n1" />
-                  <div className={classes.Number}>{gn1}</div>
+              <div
+                className={`${classes.NumberMainWrapper} ${
+                  isFinalPopupShowing &&
+                  `${classes.bounce} ${classes.ShowNumberMainWrapper}`
+                }`}
+              >
+                <div
+                  className={`${
+                    isFinalPopupShowing &&
+                    `${card.card} ${card.animated} ${classes.card}`
+                  }`}
+                >
+                  <div className={classes.NumberWrapper}>
+                    <img src={n1} alt="n1" />
+                    <div className={classes.Number}>{gn1}</div>
+                  </div>
                 </div>
               </div>
-              <div className={`${card.card} ${card.animated} ${classes.card}`}>
-                <div className={classes.NumberWrapper}>
-                  <img src={n2} alt="n2" />
-                  <div className={classes.Number}>{gn2}</div>
+              <div
+                className={`${classes.NumberMainWrapper} ${
+                  isSecondNumberShowing &&
+                  `${classes.bounce} ${classes.ShowNumberMainWrapper}`
+                }`}
+              >
+                <div
+                  className={`${
+                    isSecondNumberShowing &&
+                    `${card.card} ${card.animated} ${classes.card}`
+                  }`}
+                >
+                  <div className={classes.NumberWrapper}>
+                    <img src={n2} alt="n2" />
+                    <div className={classes.Number}>{gn2}</div>
+                  </div>
                 </div>
               </div>
-              <div className={`${card.card} ${card.animated} ${classes.card}`}>
-                <div className={classes.NumberWrapper}>
-                  <img src={n3} alt="n3" />
-                  <div className={classes.Number}>{gn3}</div>
+
+              <div
+                className={`${classes.NumberMainWrapper} ${
+                  isThirdNumberShowing &&
+                  `${classes.bounce} ${classes.ShowNumberMainWrapper}`
+                }`}
+              >
+                <div
+                  className={`${
+                    isThirdNumberShowing &&
+                    `${card.card} ${card.animated} ${classes.card}`
+                  }`}
+                >
+                  <div className={classes.NumberWrapper}>
+                    <img src={n3} alt="n3" />
+                    <div className={classes.Number}>{gn3}</div>
+                  </div>
                 </div>
               </div>
-              <div className={`${card.card} ${card.animated} ${classes.card}`}>
-                <div className={classes.NumberWrapper}>
-                  <img src={n4} alt="n4" />
-                  <div className={classes.Number}>{gn4}</div>
+              <div
+                className={`${classes.NumberMainWrapper} ${
+                  isFourthNumberShowing &&
+                  `${classes.bounce} ${classes.ShowNumberMainWrapper}`
+                }`}
+              >
+                <div
+                  className={`${
+                    isFourthNumberShowing &&
+                    `${card.card} ${card.animated} ${classes.card}`
+                  }`}
+                >
+                  <div className={classes.NumberWrapper}>
+                    <img src={n4} alt="n4" />
+                    <div className={classes.Number}>{gn4}</div>
+                  </div>
                 </div>
               </div>
             </div>
-            <Button variant="contained" onClick={closePopup}>
-              Confirm
-            </Button>
+            {isFinalPopupShowing && (
+              <Button variant="contained" onClick={closePopup}>
+                Confirm
+              </Button>
+            )}
           </div>
         )}
       </div>
