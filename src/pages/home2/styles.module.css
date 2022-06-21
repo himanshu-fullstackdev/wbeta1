@@ -141,7 +141,7 @@
 
 @media screen and (max-width: 480px) {
   .finalImageWrapper img {
-    width: 50px;
+    width: 65px;
   }
   .finalImageWrapper .Number {
     font-size: 16px;

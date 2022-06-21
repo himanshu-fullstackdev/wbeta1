@@ -155,9 +155,8 @@ const Home2 = (props) => {
                 }`}
               >
                 <div
-                  className={`${
-                    isFinalPopupShowing &&
-                    `${card.card} ${card.animated} ${classes.card}`
+                  className={`${classes.card} ${
+                    isFinalPopupShowing && `${card.card} ${card.animated}`
                   }`}
                 >
                   <div className={classes.NumberWrapper}>
@@ -173,9 +172,8 @@ const Home2 = (props) => {
                 }`}
               >
                 <div
-                  className={`${
-                    isSecondNumberShowing &&
-                    `${card.card} ${card.animated} ${classes.card}`
+                  className={`${classes.card} ${
+                    isSecondNumberShowing && `${card.card} ${card.animated}`
                   }`}
                 >
                   <div className={classes.NumberWrapper}>
@@ -192,9 +190,8 @@ const Home2 = (props) => {
                 }`}
               >
                 <div
-                  className={`${
-                    isThirdNumberShowing &&
-                    `${card.card} ${card.animated} ${classes.card}`
+                  className={`${classes.card} ${
+                    isThirdNumberShowing && `${card.card} ${card.animated}`
                   }`}
                 >
                   <div className={classes.NumberWrapper}>
@@ -210,9 +207,8 @@ const Home2 = (props) => {
                 }`}
               >
                 <div
-                  className={`${
-                    isFourthNumberShowing &&
-                    `${card.card} ${card.animated} ${classes.card}`
+                  className={`${classes.card} ${
+                    isFourthNumberShowing && `${card.card} ${card.animated}`
                   }`}
                 >
                   <div className={classes.NumberWrapper}>
