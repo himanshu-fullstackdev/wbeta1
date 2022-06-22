@@ -141,7 +141,6 @@ const Home2 = (props) => {
           muted
           ref={video}
           playsInline
-          autoPlay
           onEnded={handleVideoEnded}
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
