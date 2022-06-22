@@ -112,6 +112,7 @@ const Home2 = (props) => {
     setIsSecondNumberShowing(false);
     setIsThirdNumberShowing(false);
     setIsFourthNumberShowing(false);
+    setVideoCount(1);
     setGn1("");
     setGn2("");
     setGn3("");
