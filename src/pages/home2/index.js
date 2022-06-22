@@ -218,11 +218,13 @@ const Home2 = (props) => {
                 </div>
               </div>
             </div>
-            {isFinalPopupShowing && (
-              <Button variant="contained" onClick={closePopup}>
-                Confirm
-              </Button>
-            )}
+            <Button
+              className={`${isFourthNumberShowing && `${classes.showButton}`}`}
+              variant="contained"
+              onClick={closePopup}
+            >
+              Confirm
+            </Button>
           </div>
         )}
       </div>
