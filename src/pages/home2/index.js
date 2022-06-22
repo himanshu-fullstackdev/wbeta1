@@ -38,6 +38,7 @@ const Home2 = (props) => {
   const [isSecondNumberShowing, setIsSecondNumberShowing] = useState(false);
   const [isThirdNumberShowing, setIsThirdNumberShowing] = useState(false);
   const [isFourthNumberShowing, setIsFourthNumberShowing] = useState(false);
+  const [isButtonShowing, setIsButtonShowing] = useState(false);
 
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
@@ -57,6 +58,7 @@ const Home2 = (props) => {
     let timeout2;
     let timeout3;
     let timeout4;
+    let timeout5;
     if (isVideoShowing) {
       timeout1 = setTimeout(() => {
         setIsFinalPopupShowing(true);
@@ -70,12 +72,16 @@ const Home2 = (props) => {
       timeout4 = setTimeout(() => {
         setIsFourthNumberShowing(true);
       }, 18000);
+      timeout5 = setTimeout(() => {
+        setIsButtonShowing(true);
+      }, 23000);
     }
     return () => {
       clearTimeout(timeout1);
       clearTimeout(timeout2);
       clearTimeout(timeout3);
       clearTimeout(timeout4);
+      clearTimeout(timeout5);
     };
   }, [isVideoShowing]);
 
@@ -112,6 +118,7 @@ const Home2 = (props) => {
     setIsSecondNumberShowing(false);
     setIsThirdNumberShowing(false);
     setIsFourthNumberShowing(false);
+    setIsButtonShowing(false);
     setVideoCount(1);
     setGn1("");
     setGn2("");
@@ -219,7 +226,7 @@ const Home2 = (props) => {
               </div>
             </div>
             <Button
-              className={`${isFourthNumberShowing && `${classes.showButton}`}`}
+              className={`${isButtonShowing && `${classes.showButton}`}`}
               variant="contained"
               onClick={closePopup}
             >
