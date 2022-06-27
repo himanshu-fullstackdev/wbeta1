@@ -106,11 +106,17 @@ const Home2 = (props) => {
   };
 
   const handleOnCanPlayThrough = () => {
-    console.log(
-      "Video can played entirely without ever having to stop to buffer."
-    );
+    console.log("handleOnCanPlayThrough");
     console.log(video.current.readyState);
-    if (video.current && video.current.readyState === 4) {
+    if (video.current && video.current.readyState === 4 && !isReady) {
+      setIsReady(true);
+    }
+  };
+
+  const handleOnLoadedMetaData = () => {
+    console.log("handleOnLoadedMetaData");
+    console.log(video.current.readyState);
+    if (video.current && video.current.readyState === 4 && !isReady) {
       setIsReady(true);
     }
   };
@@ -162,7 +168,8 @@ const Home2 = (props) => {
           // onLoad={handleVideoStart}
           onEnded={handleVideoEnded}
           onCanPlayThrough={handleOnCanPlayThrough}
-          preload="metadata"
+          onLoadedMetaData={handleOnLoadedMetaData}
+          preload="auto"
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
