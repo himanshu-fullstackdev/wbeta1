@@ -39,6 +39,7 @@ const Home2 = (props) => {
   const [isThirdNumberShowing, setIsThirdNumberShowing] = useState(false);
   const [isFourthNumberShowing, setIsFourthNumberShowing] = useState(false);
   const [isButtonShowing, setIsButtonShowing] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
@@ -104,6 +105,16 @@ const Home2 = (props) => {
     video.current && video.current.play();
   };
 
+  const handleOnCanPlayThrough = () => {
+    console.log(
+      "Video can played entirely without ever having to stop to buffer."
+    );
+    console.log(video.current.readyState);
+    if (video.current && video.current.readyState === 4) {
+      setIsReady(true);
+    }
+  };
+
   const handleVideoEnded = () => {
     if (videoCount < totalVideoCount) {
       playVideo();
@@ -148,7 +159,10 @@ const Home2 = (props) => {
           muted
           ref={video}
           playsInline
+          // onLoad={handleVideoStart}
           onEnded={handleVideoEnded}
+          onCanPlayThrough={handleOnCanPlayThrough}
+          preload="auto"
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
@@ -236,7 +250,7 @@ const Home2 = (props) => {
         )}
       </div>
 
-      {!isVideoShowing && (
+      {!isVideoShowing && isReady && (
         <div className={"frame " + classes.MainWrapper}>
           <div className={classes.GnMainWrapper}>
             {/* button */}
