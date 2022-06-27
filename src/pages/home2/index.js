@@ -162,7 +162,7 @@ const Home2 = (props) => {
           // onLoad={handleVideoStart}
           onEnded={handleVideoEnded}
           onCanPlayThrough={handleOnCanPlayThrough}
-          preload="auto"
+          preload="metadata"
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
