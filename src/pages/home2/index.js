@@ -105,16 +105,17 @@ const Home2 = (props) => {
     video.current && video.current.play();
   };
 
-  const handleOnCanPlayThrough = () => {
-    console.log("handleOnCanPlayThrough");
-    console.log(video.current.readyState);
-    if (video.current && video.current.readyState === 4 && !isReady) {
-      setIsReady(true);
-    }
-  };
+  // const handleOnCanPlayThrough = () => {
+  //   console.log("handleOnCanPlayThrough");
+  //   console.log(video.current.readyState);
+  //   console.log(video);
+  //   if (video.current && video.current.readyState === 4 && !isReady) {
+  //     setIsReady(true);
+  //   }
+  // };
 
-  const handleOnLoadedMetadata = () => {
-    console.log("handleOnLoadedMetadata");
+  const handleOnLoadedData = () => {
+    console.log("handleOnLoadedData");
     console.log(video.current.readyState);
     if (video.current && video.current.readyState === 4 && !isReady) {
       setIsReady(true);
@@ -167,8 +168,8 @@ const Home2 = (props) => {
           playsInline
           // onLoad={handleVideoStart}
           onEnded={handleVideoEnded}
-          onCanPlayThrough={handleOnCanPlayThrough}
-          onLoadedMetadata={handleOnLoadedMetadata}
+          // onCanPlayThrough={handleOnCanPlayThrough}
+          onLoadedData={handleOnLoadedData}
           preload="auto"
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
