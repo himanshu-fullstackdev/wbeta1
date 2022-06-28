@@ -22,6 +22,8 @@ const gn2MaxValue = 49;
 const gn3MaxValue = 49;
 const gn4MaxValue = 49;
 
+const showAnimationAt = 3;
+
 const Home = (props) => {
   // width
   const [width, setWidth] = useState(window.innerWidth);
@@ -54,17 +56,23 @@ const Home = (props) => {
   }, []);
 
   // display popup after 3s
-  useEffect(() => {
-    let timeout;
-    if (isVideoShowing) {
-      timeout = setTimeout(() => {
-        setIsFinalPopupShowing(true);
-      }, 3000);
+  // useEffect(() => {
+  //   let timeout;
+  //   if (isVideoShowing) {
+  //     timeout = setTimeout(() => {
+  //       setIsFinalPopupShowing(true);
+  //     }, 3000);
+  //   }
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, [isVideoShowing]);
+
+  const handleOnTimeUpdate = () => {
+    if (video.current.currentTime >= showAnimationAt) {
+      setIsFinalPopupShowing(true);
     }
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isVideoShowing]);
+  };
 
   // refs
   const video = useRef();
@@ -231,7 +239,8 @@ const Home = (props) => {
           muted
           ref={video}
           playsInline
-          autoPlay
+          preload="auto"
+          onTimeUpdate={handleOnTimeUpdate}
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
         </video>
