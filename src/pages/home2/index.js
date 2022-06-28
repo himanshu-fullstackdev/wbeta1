@@ -18,6 +18,9 @@ const gn4MaxValue = 49;
 // total video count
 const totalVideoCount = 4;
 
+const showAnimationAt = 3;
+const showButtonAt = 5;
+
 const Home2 = (props) => {
   // width
   const [width, setWidth] = useState(window.innerWidth);
@@ -34,7 +37,7 @@ const Home2 = (props) => {
   // booleans
   const isMobile = width <= 600;
   const [isVideoShowing, setIsVideoShowing] = useState(false);
-  const [isFinalPopupShowing, setIsFinalPopupShowing] = useState(false);
+  const [isFirstNumberShowing, setIsFirstNumberShowing] = useState(false);
   const [isSecondNumberShowing, setIsSecondNumberShowing] = useState(false);
   const [isThirdNumberShowing, setIsThirdNumberShowing] = useState(false);
   const [isFourthNumberShowing, setIsFourthNumberShowing] = useState(false);
@@ -54,37 +57,73 @@ const Home2 = (props) => {
   }, []);
 
   // display popup after 3s
-  useEffect(() => {
-    let timeout1;
-    let timeout2;
-    let timeout3;
-    let timeout4;
-    let timeout5;
-    if (isVideoShowing) {
-      timeout1 = setTimeout(() => {
-        setIsFinalPopupShowing(true);
-      }, 3000);
-      timeout2 = setTimeout(() => {
-        setIsSecondNumberShowing(true);
-      }, 8000);
-      timeout3 = setTimeout(() => {
-        setIsThirdNumberShowing(true);
-      }, 13000);
-      timeout4 = setTimeout(() => {
-        setIsFourthNumberShowing(true);
-      }, 18000);
-      timeout5 = setTimeout(() => {
-        setIsButtonShowing(true);
-      }, 23000);
+  // useEffect(() => {
+  //   let timeout1;
+  //   let timeout2;
+  //   let timeout3;
+  //   let timeout4;
+  //   let timeout5;
+  //   if (isVideoShowing) {
+  //     timeout1 = setTimeout(() => {
+  //       setIsFirstNumberShowing(true);
+  //     }, 3000);
+  //     timeout2 = setTimeout(() => {
+  //       setIsSecondNumberShowing(true);
+  //     }, 8000);
+  //     timeout3 = setTimeout(() => {
+  //       setIsThirdNumberShowing(true);
+  //     }, 13000);
+  //     timeout4 = setTimeout(() => {
+  //       setIsFourthNumberShowing(true);
+  //     }, 18000);
+  //     timeout5 = setTimeout(() => {
+  //       setIsButtonShowing(true);
+  //     }, 23000);
+  //   }
+  //   return () => {
+  //     clearTimeout(timeout1);
+  //     clearTimeout(timeout2);
+  //     clearTimeout(timeout3);
+  //     clearTimeout(timeout4);
+  //     clearTimeout(timeout5);
+  //   };
+  // }, [isVideoShowing]);
+
+  const handleOnTimeUpdate = () => {
+    if (
+      videoCount === 1 &&
+      video.current.currentTime >= showAnimationAt &&
+      !isFirstNumberShowing
+    ) {
+      setIsFirstNumberShowing(true);
+    } else if (
+      videoCount === 2 &&
+      video.current.currentTime >= showAnimationAt &&
+      !isSecondNumberShowing
+    ) {
+      setIsSecondNumberShowing(true);
+    } else if (
+      videoCount === 3 &&
+      video.current.currentTime >= showAnimationAt &&
+      !isThirdNumberShowing
+    ) {
+      setIsThirdNumberShowing(true);
+    } else if (
+      videoCount === 4 &&
+      video.current.currentTime >= showAnimationAt &&
+      !isFourthNumberShowing
+    ) {
+      setIsFourthNumberShowing(true);
+    } else if (
+      isFirstNumberShowing &&
+      isSecondNumberShowing &&
+      isThirdNumberShowing &&
+      isFourthNumberShowing &&
+      video.current.currentTime >= showButtonAt
+    ) {
+      setIsButtonShowing(true);
     }
-    return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-      clearTimeout(timeout3);
-      clearTimeout(timeout4);
-      clearTimeout(timeout5);
-    };
-  }, [isVideoShowing]);
+  };
 
   // refs
   const video = useRef();
@@ -132,7 +171,7 @@ const Home2 = (props) => {
   // close video, popup & reset everything
   const closePopup = () => {
     setIsVideoShowing(false);
-    setIsFinalPopupShowing(false);
+    setIsFirstNumberShowing(false);
     setIsSecondNumberShowing(false);
     setIsThirdNumberShowing(false);
     setIsFourthNumberShowing(false);
@@ -170,6 +209,7 @@ const Home2 = (props) => {
           onEnded={handleVideoEnded}
           // onCanPlayThrough={handleOnCanPlayThrough}
           onLoadedMetadata={handleOnLoadedMetadata}
+          onTimeUpdate={handleOnTimeUpdate}
           preload="auto"
         >
           <source src={!isMobile ? bgVideo : bgVideoMobile} type="video/mp4" />
@@ -179,13 +219,13 @@ const Home2 = (props) => {
             <div className={classes.NumbersWrapper}>
               <div
                 className={`${classes.NumberMainWrapper} ${
-                  isFinalPopupShowing &&
+                  isFirstNumberShowing &&
                   `${classes.bounce} ${classes.ShowNumberMainWrapper}`
                 }`}
               >
                 <div
                   className={`${classes.card} ${
-                    isFinalPopupShowing && `${card.card} ${card.animated}`
+                    isFirstNumberShowing && `${card.card} ${card.animated}`
                   }`}
                 >
                   <div className={classes.NumberWrapper}>
