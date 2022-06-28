@@ -96,7 +96,7 @@
   margin: 0px 5px;
 }
 .bounce {
-  animation: bounce 2.86s;
+  animation: bounce 2s;
   animation-direction: alternate;
   animation-iteration-count: 1;
 }
