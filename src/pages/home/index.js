@@ -10,6 +10,7 @@ import { toPng } from "html-to-image";
 import bgVideo from "../../assets/videos/bg-video.mp4";
 import bgVideoMobile from "../../assets/videos/bg-video-mobile.mp4";
 import card from "../card.module.scss";
+import Confetti from "react-confetti";
 
 // layers max value
 const l1MaxImages = 3;
@@ -39,6 +40,7 @@ const Home = (props) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isVideoShowing, setIsVideoShowing] = useState(false);
   const [isFinalPopupShowing, setIsFinalPopupShowing] = useState(false);
+  const [isConfettiShowing, setIsConfettiShowing] = useState(false);
 
   // final data
   const [finalImage, setFinalImage] = useState("");
@@ -71,8 +73,23 @@ const Home = (props) => {
   const handleOnTimeUpdate = () => {
     if (video.current.currentTime >= showAnimationAt) {
       setIsFinalPopupShowing(true);
+      if (!isConfettiShowing) {
+        setIsConfettiShowing(true);
+      }
     }
   };
+
+  useEffect(() => {
+    let timeout;
+    if (isConfettiShowing) {
+      timeout = setTimeout(() => {
+        setIsConfettiShowing(false);
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isConfettiShowing]);
 
   // refs
   const video = useRef();
@@ -114,6 +131,7 @@ const Home = (props) => {
   const closePopup = () => {
     setIsVideoShowing(false);
     setIsFinalPopupShowing(false);
+    setIsConfettiShowing(false);
     setFinalImage("");
     setGn1("");
     setGn2("");
@@ -252,6 +270,13 @@ const Home = (props) => {
             <Button variant="contained" onClick={closePopup}>
               Confirm
             </Button>
+            <div
+              className={`${classes.ConfettiMainWrapper} ${
+                isConfettiShowing && `${classes.ShowConfettiMainWrapper}`
+              }`}
+            >
+              <Confetti />
+            </div>
           </div>
         )}
       </div>

@@ -63,7 +63,15 @@
 .ButtonWrapper button {
   width: 100%;
 }
-
+.ConfettiMainWrapper {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+.ConfettiMainWrapper.ShowConfettiMainWrapper {
+  visibility: visible;
+  opacity: 1;
+}
 @media screen and (max-width: 768px) {
   .finalImageWrapper img {
     width: 500px;
