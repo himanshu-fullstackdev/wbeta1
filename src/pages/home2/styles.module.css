@@ -61,6 +61,15 @@
   visibility: visible;
   opacity: 1;
 }
+.finalImageWrapper .ConfettiMainWrapper {
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+.finalImageWrapper .ConfettiMainWrapper.ShowConfettiMainWrapper {
+  visibility: visible;
+  opacity: 1;
+}
 .finalImageWrapper .NumbersWrapper {
   display: flex;
   flex-wrap: wrap;

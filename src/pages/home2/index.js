@@ -8,6 +8,7 @@ import n2 from "../../assets/images/n2.png";
 import n3 from "../../assets/images/n3.png";
 import n4 from "../../assets/images/n4.png";
 import card from "../card.module.scss";
+import Confetti from "react-confetti";
 
 // max value of each dropdown
 const gn1MaxValue = 49;
@@ -42,6 +43,7 @@ const Home2 = (props) => {
   const [isThirdNumberShowing, setIsThirdNumberShowing] = useState(false);
   const [isFourthNumberShowing, setIsFourthNumberShowing] = useState(false);
   const [isButtonShowing, setIsButtonShowing] = useState(false);
+  const [isConfettiShowing, setIsConfettiShowing] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
   const handleWindowSizeChange = () => {
@@ -114,6 +116,9 @@ const Home2 = (props) => {
       !isFourthNumberShowing
     ) {
       setIsFourthNumberShowing(true);
+      if (!isConfettiShowing) {
+        setIsConfettiShowing(true);
+      }
     } else if (
       isFirstNumberShowing &&
       isSecondNumberShowing &&
@@ -124,6 +129,18 @@ const Home2 = (props) => {
       setIsButtonShowing(true);
     }
   };
+
+  useEffect(() => {
+    let timeout;
+    if (isConfettiShowing) {
+      timeout = setTimeout(() => {
+        setIsConfettiShowing(false);
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [isConfettiShowing]);
 
   // refs
   const video = useRef();
@@ -175,6 +192,7 @@ const Home2 = (props) => {
     setIsSecondNumberShowing(false);
     setIsThirdNumberShowing(false);
     setIsFourthNumberShowing(false);
+    setIsConfettiShowing(false);
     setIsButtonShowing(false);
     setVideoCount(1);
     setGn1("");
@@ -285,6 +303,13 @@ const Home2 = (props) => {
                     <div className={classes.Number}>{gn4}</div>
                   </div>
                 </div>
+              </div>
+              <div
+                className={`${classes.ConfettiMainWrapper} ${
+                  isConfettiShowing && `${classes.ShowConfettiMainWrapper}`
+                }`}
+              >
+                <Confetti />
               </div>
             </div>
             <Button
